@@ -1,0 +1,8 @@
+shov_stocks:
+    resource: "@ShovStocksBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

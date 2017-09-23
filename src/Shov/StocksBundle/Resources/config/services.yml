@@ -1,0 +1,4 @@
+services:
+#    shov_stocks.example:
+#        class: Shov\StocksBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
