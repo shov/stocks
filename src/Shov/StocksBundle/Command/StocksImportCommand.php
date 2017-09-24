@@ -12,8 +12,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 class StocksImportCommand extends ContainerAwareCommand
 {
     const MESSAGES = [
-        'WRONG_PATH' => "Wrong path!",
-        'WRONG_FILE' => "Corrupted file given!",
+        'WRONG_PATH' => "Wrong path!\n",
+        'WRONG_FILE' => "Corrupted file given!\n",
+        'SUCCESS_ITEMS' => "Success imported items: %d\n",
+        'FAILED_ITEMS' => "Failed: %d\n",
     ];
 
     protected function configure()
