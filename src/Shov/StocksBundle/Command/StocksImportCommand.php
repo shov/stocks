@@ -13,6 +13,7 @@ class StocksImportCommand extends ContainerAwareCommand
 {
     const MESSAGES = [
         'WRONG_PATH' => "Wrong path!",
+        'WRONG_FILE' => "Corrupted file given!",
     ];
 
     protected function configure()

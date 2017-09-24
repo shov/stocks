@@ -65,6 +65,18 @@ class Stock
     private $stmTimestamp;
 
     /**
+     * @var int
+     * @ORM\Column(name="stockLevel", type="integer")
+     */
+    private $stockLevel;
+
+    /**
+     * @var int
+     * @ORM\Column(name="price", type="integer")
+     */
+    private $price;
+
+    /**
      * Get intProductDataId
      *
      * @return int
@@ -216,6 +228,54 @@ class Stock
     public function getStmTimestamp()
     {
         return $this->stmTimestamp;
+    }
+
+    /**
+     * Set stockLevel
+     *
+     * @param $stockLevel
+     *
+     * @return Stock
+     */
+    public function setStockLevel(int $stockLevel): Stock
+    {
+        $this->stockLevel = $stockLevel;
+
+        return $this;
+    }
+
+    /**
+     * Get stockLevel
+     *
+     * @return int
+     */
+    public function getStockLevel(): int
+    {
+        return $this->stockLevel;
+    }
+
+    /**
+     * Set Price
+     *
+     * @param int $price
+     *
+     * @return Stock
+     */
+    public function setPrice(int $price): Stock
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get Price
+     *
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price;
     }
 }
 

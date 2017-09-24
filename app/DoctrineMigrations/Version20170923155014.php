@@ -5,6 +5,9 @@ namespace Application\Migrations;
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
 
+/**
+ * Init migration
+ */
 class Version20170923155014 extends AbstractMigration
 {
     /**
