@@ -13,7 +13,7 @@ use Symfony\Component\Filesystem\Filesystem;
 /**
  * Class StocksImportCommandTest
  * @package Shov\StocksBundle\Tests
- * @cover \Shov\StocksBundle\Command\StocksImportCommand
+ * @covers StocksImportCommand
  */
 class StocksImportCommandTest extends CommandTestCase
 {
@@ -56,6 +56,60 @@ class StocksImportCommandTest extends CommandTestCase
      * @test
      */
     public function takeWrongCSV()
+    {
+        $commandTester = $this->getCommandTesterFor(new StocksImportCommand());
+
+        $content = "Something definitely not CSV\n\n";
+
+        $fs = new Filesystem();
+        $path = $fs->tempnam('/tmp', 'StockTest');
+        $fs->appendToFile($path, $content);
+
+        try {
+            $commandTester->execute(['source' => $path]);
+        } catch (\Throwable $e) {
+            $this->fail(sprintf("On Exception '%s'", $e->getMessage()));
+        }
+
+        $this->assertContains(
+            StocksImportCommand::MESSAGES['WRONG_FILE'],
+            $commandTester->getDisplay()
+        );
+
+        @unlink($path);
+    }
+
+    /**
+     * @test
+     */
+    public function testModeOn()
+    {
+        $commandTester = $this->getCommandTesterFor(new StocksImportCommand());
+
+        $content = "Something definitely not CSV\n\n";
+
+        $fs = new Filesystem();
+        $path = $fs->tempnam('/tmp', 'StockTest');
+        $fs->appendToFile($path, $content);
+
+        try {
+            $commandTester->execute(['source' => $path]);
+        } catch (\Throwable $e) {
+            $this->fail(sprintf("On Exception '%s'", $e->getMessage()));
+        }
+
+        $this->assertContains(
+            StocksImportCommand::MESSAGES['WRONG_FILE'],
+            $commandTester->getDisplay()
+        );
+
+        @unlink($path);
+    }
+
+    /**
+     * @test
+     */
+    public function testModeOff()
     {
         $commandTester = $this->getCommandTesterFor(new StocksImportCommand());
 
